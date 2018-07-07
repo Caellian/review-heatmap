@@ -29,7 +29,7 @@ function mergeRecursive(a,b){"use strict";for(var c in b)try{b[c].constructor===
 """
 
 css_heat = """
-.cal-heatmap-container{display:block}.cal-heatmap-container .cal-heatmap-container .graph-label{fill:#999;font-size:10px}.cal-heatmap-container .graph,.cal-heatmap-container .graph-legend rect{shape-rendering:crispedges}.cal-heatmap-container .graph-rect{fill:#ededed}.cal-heatmap-container .graph-subdomain-group rect:hover{stroke:#000;stroke-width:1px}.cal-heatmap-container .subdomain-text{font-size:8px;fill:#999;pointer-events:none}.cal-heatmap-container .hover_cursor:hover{cursor:pointer}.cal-heatmap-container .qi{background-color:#999;fill:#999}.cal-heatmap-container .q1{background-color:#dae289;fill:#dae289}.cal-heatmap-container .q2{background-color:#cedb9c;fill:#9cc069}.cal-heatmap-container .q3{background-color:#b5cf6b;fill:#669d45}.cal-heatmap-container .q4{background-color:#637939;fill:#637939}.cal-heatmap-container .q5{background-color:#3b6427;fill:#3b6427}.cal-heatmap-container rect.highlight{stroke:#444;stroke-width:1}.cal-heatmap-container text.highlight{fill:#444}.cal-heatmap-container rect.highlight-now{stroke:red}.cal-heatmap-container text.highlight-now{fill:red;font-weight:800}.cal-heatmap-container .domain-background{fill:none;shape-rendering:crispedges}.ch-tooltip{padding:10px;background:#222;color:#bbb;font-size:12px;line-height:1.4;width:140px;position:absolute;z-index:99999;text-align:center;border-radius:2px;box-shadow:2px 2px 2px rgba(0,0,0,.2);display:none;box-sizing:border-box}.ch-tooltip::after{position:absolute;width:0;height:0;border-color:#222 transparent transparent;border-style:solid;content:"";padding:0;display:block;bottom:-6px;left:50%;margin-left:-6px;border-width:6px 6px 0}
+.cal-heatmap-container{display:block}.cal-heatmap-container .cal-heatmap-container .graph-label{fill:#999;font-size:10px}.cal-heatmap-container .graph,.cal-heatmap-container .graph-legend rect{shape-rendering:crispedges}.cal-heatmap-container .graph-rect{fill:#383838}.cal-heatmap-container .graph-subdomain-group rect:hover{stroke:#fff;stroke-width:1px}.cal-heatmap-container .subdomain-text{font-size:8px;fill:#999;pointer-events:none}.cal-heatmap-container .hover_cursor:hover{cursor:pointer}.cal-heatmap-container .qi{background-color:#999;fill:#999}.cal-heatmap-container .q1{background-color:#dae289;fill:#dae289}.cal-heatmap-container .q2{background-color:#cedb9c;fill:#9cc069}.cal-heatmap-container .q3{background-color:#b5cf6b;fill:#669d45}.cal-heatmap-container .q4{background-color:#637939;fill:#637939}.cal-heatmap-container .q5{background-color:#3b6427;fill:#3b6427}.cal-heatmap-container rect.highlight{stroke:#444;stroke-width:1}.cal-heatmap-container text.highlight{fill:#444}.cal-heatmap-container rect.highlight-now{stroke:blue}.cal-heatmap-container text.highlight-now{fill:blue;font-weight:800}.cal-heatmap-container .domain-background{fill:none;shape-rendering:crispedges}.ch-tooltip{padding:10px;background:#222;color:#bbb;font-size:12px;line-height:1.4;width:140px;position:absolute;z-index:99999;text-align:center;border-radius:2px;box-shadow:2px 2px 2px rgba(0,0,0,.2);display:none;box-sizing:border-box}.ch-tooltip::after{position:absolute;width:0;height:0;border-color:#222 transparent transparent;border-style:solid;content:"";padding:0;display:block;bottom:-6px;left:50%;margin-left:-6px;border-width:6px 6px 0}
 """
 
 heatmap_boilerplate = r"""
@@ -50,38 +50,38 @@ heatmap_css = """
 <style>
 .hm-btn {
     cursor: pointer;
-    background: #e6e6e6;
-    color: #808080;
+    background: #383838;
+    color: #696969;
     padding: 2px 8px;
     border-radius: 3px;
     margin-left: 2px;
     text-decoration: none;
     user-select: none;}
 .hm-btn:hover {
-    background: #808080;
-    color: #fff}
+    background: #999999;
+    color: #000}
 .hm-btn:active {background: #000}
 .graph-label {fill: #808080;}
 .heatmap {margin-top: 1em;}
 .heatmap-controls {margin-bottom: 1em;}
 .cal-heatmap-container rect.highlight-now {
-    stroke: black;}
+    stroke: white;}
 .cal-heatmap-container rect.highlight {
-    stroke: #E9002E;}
+    stroke: blue;}
 .streak {margin-top: 0.5em;}
 .streak-info {margin-left: 1em;}
 .sstats {font-weight: bold;}
 /* future reviews (shades of grey): */
-.cal-heatmap-container .q1{fill: #525252}
-.cal-heatmap-container .q2{fill: #616161}
-.cal-heatmap-container .q3{fill: #707070}
-.cal-heatmap-container .q4{fill: #7F7F7F}
-.cal-heatmap-container .q5{fill: #8E8E8E}
-.cal-heatmap-container .q6{fill: #9D9D9D}
-.cal-heatmap-container .q7{fill: #ACACAC}
-.cal-heatmap-container .q8{fill: #BBBBBB}
-.cal-heatmap-container .q9{fill: #CACACA}
-.cal-heatmap-container .q10{fill: #D9D9D9}
+.cal-heatmap-container .q1{fill: #4f4e4e}
+.cal-heatmap-container .q2{fill: #5c5b5b}
+.cal-heatmap-container .q3{fill: #636261}
+.cal-heatmap-container .q4{fill: #6e6d6c}
+.cal-heatmap-container .q5{fill: #7a7978}
+.cal-heatmap-container .q6{fill: #858483}
+.cal-heatmap-container .q7{fill: #8c8b8a}
+.cal-heatmap-container .q8{fill: #969594}
+.cal-heatmap-container .q9{fill: #a19f9e}
+.cal-heatmap-container .q10{fill: #a8a6a5}
 /* past reviews (shades of green): */
 .cal-heatmap-container .q11{fill: %s}
 .cal-heatmap-container .q12{fill: %s}
